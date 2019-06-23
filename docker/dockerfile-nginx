@@ -1,0 +1,6 @@
+FROM nginx
+
+MAINTAINER Chris W Mann
+
+# Copy custom configuration file from the current directory
+COPY /nginx/nginx.conf /etc/nginx/nginx.conf

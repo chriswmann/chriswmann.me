@@ -1,0 +1,22 @@
+FROM python:3
+
+MAINTAINER Chris W Mann
+
+ENV PYTHONUNBUFFERED 1
+WORKDIR /usr/src/
+COPY /app/ /usr/src/
+
+RUN chmod +x /usr/src/entrypoint.sh
+
+# Make sure we're running bash
+RUN ln -sf /bin/bash /bin/sh
+
+RUN pip install -r app-requirements.txt
+# RUN apt-get update && apt-get upgrade && apt-get install sudo
+
+# RUN useradd -ms /bin/bash appuser
+# RUN chown -R appuser *
+# RUN usermod -aG sudo appuser
+# USER appuser
+
+WORKDIR /usr/src/app
