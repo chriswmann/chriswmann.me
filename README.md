@@ -4,7 +4,7 @@ A data science portfolio website.
 ## Welcome
 chriswmann.me will be a website to showcase my data science skills in an end-to-end, productionised context.
 
-It is a new project (as of 21st June 2019) and one I'm creating in my spare time.
+It is a new project (as of 23rd June 2019) and one I'm creating in my spare time.
 
 I'm yet to make various decisions but have so far decided to:
 1. Use python (instead of R). I'm experienced with both python and R for data science.  However, I don't know any web frameworks in R, whereas I have made and deployed several websites with Django, postgresql, gunicorn and nginx previously.
