@@ -1,0 +1,25 @@
+# Byte-compiled / optimized / DLL files
+**/__pycache__/
+**/*.py[cod]
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+
+# Django stuff:
+*.log
+*.pot
+
+# Sphinx documentation
+docs/_build/
+
+# Temp files
+*.swp
+*.tmp
+*~
+*.old
+.DS_Store
+
+# VS Code files
+.vscode/
