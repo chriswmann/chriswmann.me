@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
+
+POSTGRES_DB = os.getenv('POSTGRES_DB')
+POSTGRES_PASSWORD = os.getenv('POSTGRES_PASSWORD')
+POSTGRES_USER = os.getenv('POSTGRES_USER')
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '!8t#8is^0u@@1qfhl6i$84h!0-588=8daw^_oa(6+&e*0m3o$1'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -79,10 +83,10 @@ WSGI_APPLICATION = 'chriswmann.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
+        'NAME': POSTGRES_DB,
+        'USER': POSTGRES_USER,
         'HOST': 'postgres',
-        'PASSWORD': '',
+        'PASSWORD': POSTGRES_PASSWORD,
         'PORT': '5432'
     }
 }

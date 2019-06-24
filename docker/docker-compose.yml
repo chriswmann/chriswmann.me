@@ -15,9 +15,10 @@ services:
     expose:
       - "8000"
     volumes:
-      - ../volume/app-django:/usr/volume
+      - ../volume/app-django:/usr/volume/
       - ../volume/app-static:/usr/volume/static
     entrypoint: /usr/src/entrypoint.sh
+    env_file: .env
 
   nginx:
     restart: always
@@ -37,7 +38,8 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - /var/lib/postgresql/data/
+      - /var/lib/postgresql/data
+    env_file: .env
 
   redis:
     # restart: always

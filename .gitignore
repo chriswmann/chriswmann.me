@@ -2,6 +2,9 @@
 **/__pycache__/
 **/*.py[cod]
 
+# Env files
+.env*
+
 # Installer logs
 pip-log.txt
 
