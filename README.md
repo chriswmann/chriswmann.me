@@ -2,7 +2,7 @@
 A data science portfolio website.
 
 ## Welcome
-chriswmann.me will be a website to showcase my data science skills in an end-to-end, productionised context.
+chriswmann.me will be a website to showcase my data science and machine learning engineering skills in an end-to-end, productionised context.
 
 It is a new project (as of 23rd June 2019) and one I'm creating in my spare time.
 
