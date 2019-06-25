@@ -4,19 +4,16 @@ MAINTAINER Chris W Mann
 
 ENV PYTHONUNBUFFERED 1
 WORKDIR /usr/src/
-COPY /app/ /usr/src/
+COPY /analysis/ /usr/src/
 COPY /shared/ /root/
-
-RUN chmod +x /usr/src/entrypoint.sh
 
 # Make sure we're running bash
 RUN ln -sf /bin/bash /bin/sh
 
-RUN pip install -r app-requirements.txt
+RUN pip install -r analysis-requirements.txt
+CMD /bin/bash
 
 # RUN useradd -ms /bin/bash appuser
 # RUN chown -R appuser *
 # RUN usermod -aG sudo appuser
 # USER appuser
-
-WORKDIR /usr/src/app

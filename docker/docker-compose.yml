@@ -42,14 +42,25 @@ services:
     env_file: .env
 
   redis:
-    # restart: always
+    restart: always
     image: redis
     ports:
       - "6379:6379"
     volumes:
       - ../volume/redisdata:/data
 
+  analysis:
+    image: analysis
+    build:
+      context: .
+      dockerfile: dockerfile-analysis
+    depends_on:
+      - postgres
+    volumes:
+      - ../volume/analysis:/usr/src/analysis
+
 volumes:
+  analysis:
   app-django:
   app-static:
   pgdata:
