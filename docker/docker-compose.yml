@@ -15,8 +15,8 @@ services:
     expose:
       - "8000"
     volumes:
-      - ../volume/app-django:/usr/volume/
-      - ../volume/app-static:/usr/volume/static
+      - ../volume/app-django:/usr/src/app/chriswmann
+      - ../volume/app-static:/usr/src/app/chriswmann/static
     entrypoint: /usr/src/entrypoint.sh
     env_file: .env
 
