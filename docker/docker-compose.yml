@@ -58,6 +58,7 @@ services:
       - postgres
     volumes:
       - ../volume/analysis:/usr/src/analysis
+    entrypoint: /usr/src/entrypoint.sh
 
 volumes:
   analysis:

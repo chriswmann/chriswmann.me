@@ -7,10 +7,9 @@ WORKDIR /usr/src/
 COPY /analysis/ /usr/src/
 COPY /shared/ /root/
 
-# Make sure we're running bash
-RUN ln -sf /bin/bash /bin/sh
+# Make sure we're running bash, create a folder for the persistent volume and install the requirements
+RUN ln -sf /bin/bash /bin/sh && mkdir -vp /usr/src/analysis && pip install -r analysis-requirements.txt
 
-RUN pip install -r analysis-requirements.txt
 CMD /bin/bash
 
 # RUN useradd -ms /bin/bash appuser
