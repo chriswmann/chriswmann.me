@@ -17,7 +17,7 @@ services:
     volumes:
       - ../volume/app-django:/usr/src/app/chriswmann
       - ../volume/app-static:/usr/src/app/chriswmann/static
-    entrypoint: /usr/src/entrypoint.sh
+    entrypoint: /usr/src/app-entrypoint.sh
     env_file: .env
 
   nginx:
@@ -50,7 +50,7 @@ services:
       - ../volume/redisdata:/data
 
   analysis:
-    image: analysis
+    image: analysis_dev
     build:
       context: .
       dockerfile: dockerfile-analysis
@@ -58,7 +58,7 @@ services:
       - postgres
     volumes:
       - ../volume/analysis:/usr/src/analysis
-    entrypoint: /usr/src/entrypoint.sh
+#     entrypoint: /usr/src/analysis-entrypoint.sh
 
 volumes:
   analysis:

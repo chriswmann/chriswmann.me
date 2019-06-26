@@ -11,11 +11,14 @@ COPY /shared/ /root/
 # Make sure we're running bash
 RUN ln -sf /bin/bash /bin/sh
 
-RUN pip install -r app-requirements.txt && chmod +x /usr/src/entrypoint.sh
+RUN pip install -r app-requirements.txt
 
-# RUN useradd -ms /bin/bash appuser
-# RUN chown -R appuser *
-# RUN usermod -aG sudo appuser
-# USER appuser
+RUN adduser --disabled-password --gecos '' webdev
+RUN adduser webdev sudo
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
+COPY /shared/ /home/webdev/
+USER webdev
+RUN source /home/webdev/.bashrc
 WORKDIR /usr/src/app
+CMD /bin/bash

@@ -2,17 +2,31 @@ FROM python:3
 
 MAINTAINER Chris W Mann
 
-ENV PYTHONUNBUFFERED 1
-WORKDIR /usr/src/
-COPY /analysis/ /usr/src/
-COPY /shared/ /root/
+RUN apt-get -y update && \
+    apt-get -y upgrade && \
+    apt-get -y install vim sudo
 
 # Make sure we're running bash, create a folder for the persistent volume and install the requirements
-RUN ln -sf /bin/bash /bin/sh && mkdir -vp /usr/src/analysis && pip install -r analysis-requirements.txt
+RUN ln -sf /bin/bash /bin/sh && mkdir -vp /usr/src/analysis 
 
+ENV PYTHONUNBUFFERED 1
+RUN mkdir -vp /usr/src/analysis/data \
+    /usr/src/analysis/data/tests \
+    /usr/src/analysis/analysis \
+    /usr/src/analysis/analysis/tests \
+    /usr/src/analysis/interface \
+    /usr/src/analysis/interface/tests
+
+COPY /analysis/analysis-entrypoint.sh /usr/src/
+COPY /analysis/ /usr/src/analysis
+WORKDIR /usr/src/analysis
+RUN pip install -r analysis-requirements.txt
+
+RUN adduser --disabled-password --gecos '' analyst
+RUN adduser analyst sudo
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+COPY /shared/ /home/analyst/
+USER analyst
+RUN source /home/analyst/.bashrc
 CMD /bin/bash
-
-# RUN useradd -ms /bin/bash appuser
-# RUN chown -R appuser *
-# RUN usermod -aG sudo appuser
-# USER appuser
